@@ -1,0 +1,64 @@
+body {
+  background-color: black;
+  color: #55B7E4;
+}
+
+button {
+  background: transparent;
+  color: #55B7E4;
+}
+
+#content {
+  width: 150px;
+  margin: 125px auto;
+  text-align: center;
+}
+
+#title {
+  width: 150px;
+  height: 100px;
+  font: 30px 'Titillium Web', sans-serif;
+  line-height: 35px;
+}
+
+#game {
+  margin-top: 25px;
+}
+input#guess {
+  width: 100px;
+  margin-left: 10px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #55B7E4;
+  text-align: center;
+  font: 25px 'Titillium Web', sans-serif;
+  color: #55B7E4;
+}
+input:focus#guess {
+  outline: 0;
+  border-bottom: 1px solid red;
+}
+button#submit {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: 25px 'Titillium Web', sans-serif;
+}
+#lives {
+  font: 15px 'Titillium Web', sans-serif;
+}
+
+ul#game_buttons {
+  list-style: none;
+  margin: 75px 0 0;
+  padding: 0;
+}
+#game_buttons li {
+  padding-bottom: 10px;
+}
+#game_buttons button {
+  width: 110px;
+  padding: 10px 15px;
+  border: 1px solid #55B7E4;
+  text-transform: uppercase;
+}
