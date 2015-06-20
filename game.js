@@ -73,8 +73,9 @@ $(document).ready(function() {
   $('#newgame').click(function() {
     game = new Game;
     $('body').css('background-color', 'black');
-    $('#guess').val('');
     $('#guess').prop("readonly", false);
+    $('#guess').val('').focus();
+    $('#lives').text('IIIII');
     $('#title').html('Guess the number!<br>(1 - 100)');
   });
 

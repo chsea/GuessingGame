@@ -29,7 +29,7 @@ button:focus {
 }
 input#guess {
   width: 100px;
-  margin-left: 10px;
+  margin-left: 15px;
   background: transparent;
   border: 0;
   border-bottom: 1px solid #55B7E4;
