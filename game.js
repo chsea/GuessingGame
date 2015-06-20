@@ -24,8 +24,6 @@ Game.prototype.checkGuess = function(guess) {
     var difference = Math.abs(secretNum - guess),
         response;
 
-    this.guessDiffs.push(difference);
-
     if (difference > 40) {
       response = 'Ice cold.';
     } else if (difference > 30) {
@@ -39,9 +37,15 @@ Game.prototype.checkGuess = function(guess) {
     }
     $('#guesses').find('ol').append('<li>' + guess + ' - ' + response + '</li>');
 
-    // if (this.guessDiffs) {
-    //
-    // }
+    this.guessDiffs.push(difference);
+    var lastIndex = this.guessDiffs.length - 1;
+    if (lastIndex > 0) {
+      if (this.guessDiffs[lastIndex] >= this.guessDiffs[lastIndex - 1]) {
+        response += '<br>Getting colder.'
+      } else {
+        response += '<br>Getting warmer.'
+      }
+    }
 
     if (secretNum > guess) {
       response += '<br>Guess higher.'

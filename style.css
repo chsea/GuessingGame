@@ -12,13 +12,13 @@ button:focus {
 }
 
 #content {
-  width: 200px;
+  width: 225px;
   margin: 125px auto;
   text-align: center;
 }
 
 #title {
-  width: 200px;
+  width: 225px;
   height: 100px;
   font: 30px 'Titillium Web', sans-serif;
   line-height: 35px;
