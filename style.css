@@ -39,7 +39,6 @@ input#guess {
 }
 input:focus#guess {
   outline: 0;
-  border-bottom: 1px solid red;
 }
 button#submit {
   margin: 0;
