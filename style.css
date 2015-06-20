@@ -7,15 +7,18 @@ button {
   background: transparent;
   color: #55B7E4;
 }
+button:focus {
+  outline: 0;
+}
 
 #content {
-  width: 150px;
+  width: 200px;
   margin: 125px auto;
   text-align: center;
 }
 
 #title {
-  width: 150px;
+  width: 200px;
   height: 100px;
   font: 30px 'Titillium Web', sans-serif;
   line-height: 35px;
