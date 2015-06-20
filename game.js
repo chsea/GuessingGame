@@ -1,11 +1,13 @@
 function Game() {
   this.secretNum = Math.floor((Math.random() * 100) +1);
   this.lives = 5;
-  this.guesses = [];
+  this.guessDiffs = [];
 }
 
 Game.prototype.checkGuess = function(guess) {
-  if (guess == this.secretNum) {
+  var secretNum = this.secretNum;
+
+  if (guess == secretNum) {
     $('body').css('background-color', 'white');
     $('#title').text('Congratulations! You guessed the number!');
     $('#guess').prop("readonly", true);
@@ -19,8 +21,10 @@ Game.prototype.checkGuess = function(guess) {
       return;
     }
 
-    var difference = Math.abs(this.secretNum - guess),
+    var difference = Math.abs(secretNum - guess),
         response;
+
+    this.guessDiffs.push(difference);
 
     if (difference > 40) {
       response = 'Ice cold.';
@@ -33,9 +37,13 @@ Game.prototype.checkGuess = function(guess) {
     } else {
       response = 'On fire.';
     }
-    this.guesses.push(guess + ' - ' + response);
+    $('#guesses').find('ol').append('<li>' + guess + ' - ' + response + '</li>');
 
-    if (this.secretNum > guess) {
+    // if (this.guessDiffs) {
+    //
+    // }
+
+    if (secretNum > guess) {
       response += '<br>Guess higher.'
     } else {
       response += '<br>Guess lower.'
@@ -76,6 +84,7 @@ $(document).ready(function() {
     $('#guess').prop("readonly", false);
     $('#guess').val('').focus();
     $('#lives').text('IIIII');
+    $('#guesses').find('ol').html('');
     $('#title').html('Guess the number!<br>(1 - 100)');
   });
 
