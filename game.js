@@ -50,7 +50,7 @@ Game.prototype.checkGuess = function(guess) {
     this.guessDiffs.push(difference);
     var lastIndex = this.guessDiffs.length - 1;
     if (lastIndex > 0) {
-      if (this.guessDiffs[lastIndex] >= this.guessDiffs[lastIndex - 1]) {
+      if (this.guessDiffs[lastIndex] > this.guessDiffs[lastIndex - 1]) {
         response += '<br>Getting colder.'
       } else {
         response += '<br>Getting warmer.'
