@@ -8,11 +8,14 @@ Game.prototype.checkGuess = function(guess) {
   if (guess == this.secretNum) {
     $('body').css('background-color', 'white');
     $('#title').text('Congratulations! You guessed the number!');
+    $('#guess').prop("readonly", true);
     return;
   } else {
     this.lives--;
+    $('#lives').text('IIIII'.slice(0, this.lives));
     if (this.lives == 0) {
-      $('#title').text('Sorry, you\'re out of lives. The number was' + this.secretNum);
+      $('#title').text('Out of lives! The number was ' + this.secretNum + '.');
+      $('#guess').prop("readonly", true);
       return;
     }
 
@@ -39,7 +42,6 @@ Game.prototype.checkGuess = function(guess) {
     }
 
     $('#title').html(response);
-
     $('#guess').val('').focus();
   }
 }
@@ -59,18 +61,24 @@ $(document).ready(function() {
 
   $('#guess').focus();
 
-  $('#submit').on('click', function() {
+  $('#submit').click(function() {
     submit(game);
-  })
+  });
+  $('#guess').keydown(function(e) {
+    if (e.keyCode == 13) {
+      submit(game);
+    }
+  });
 
-  $('#newgame').on('click', function() {
+  $('#newgame').click(function() {
     game = new Game;
     $('body').css('background-color', 'black');
     $('#guess').val('');
+    $('#guess').prop("readonly", false);
     $('#title').html('Guess the number!<br>(1 - 100)');
   });
 
-  $('#hint').on('click', function() {
+  $('#hint').click(function() {
     $('#guess').val(game.secretNum);
   })
 });
