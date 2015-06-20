@@ -1,6 +1,7 @@
 function Game() {
   this.secretNum = Math.floor((Math.random() * 100) +1);
   this.lives = 5;
+  this.guesses = [];
   this.guessDiffs = [];
 }
 
@@ -13,10 +14,19 @@ Game.prototype.checkGuess = function(guess) {
     $('#guess').prop("readonly", true);
     return;
   } else {
+    if (this.guesses.some(function(el) { return el == guess })) {
+      $('#title').html('You\'ve already guessed that number!');
+      $('#guess').val('').focus();
+      return;
+    }
+
+    this.guesses.push(guess);
+
     this.lives--;
     $('#lives').text('IIIII'.slice(0, this.lives));
     if (this.lives == 0) {
-      $('#title').text('Out of lives! The number was ' + this.secretNum + '.');
+      $('body').css('background-color', 'white');
+      $('#title').html('Out of lives!<br>The number<br>was ' + this.secretNum + '.');
       $('#guess').prop("readonly", true);
       return;
     }
